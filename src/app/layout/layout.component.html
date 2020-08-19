@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="center">
+
+    <h3 class="mb-3">Your Tasks</h3>
+  </div>
+  <form [formGroup]="todoForm" (ngSubmit)="saveTodo(todoForm.value)">
+    <div class="center">
+      <div class="input-group mb-3">
+        <input formControlName="todo" type="text" class="form-control" placeholder="What are we doing today?"
+          aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-outline-secondary" id="button-addon2" [disabled]="todoForm.invalid">Save</button>
+        </div>
+
+      </div>
+    </div>
+  </form>
+  <div class="center">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of todos">
+        <span (click)="completeTodo(item)">
+           
+          <i class="hover-cursor" [ngClass]="item.isCompleted ? 'far fa-check-circle' : 'far fa-circle'"></i>
+        </span>
+        {{item.todo}}
+        <span (click)="deleteList(item.id)" class="icon" style="color: blue;"> <i
+            class="fa fa-trash fa-lg hover-cursor"></i> </span>
+
+        <span class="icon " style="color: blue; " (click)="toEdit(item)">
+          <i class="fas fa-edit fa-lg hover-cursor"></i>
+
+        </span>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input #list type="text">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                  (click)="editList(item, list.value)">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </li>
+
+    </ul>
+  </div>
+
+</div>

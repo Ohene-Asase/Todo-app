@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import  '~@fortawesome/fontawesome-free/css/all.min.css';
+* {
+    font-family: Montserrat;
+    font-weight: 200;
+    hover-cursor{
+        cursor: pointer;
+    }
+
+}
+
+body{
+    font-family: sans-serif;
+   
+}
+
+
+@font-face{
+   font-family: Montserrat;
+   src: url(assets/fonts/Montserrat-Italic.ttf) format("truetype");
+}
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
